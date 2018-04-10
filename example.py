@@ -19,4 +19,12 @@ print (a.col(0))
 # get full matrix data
 print (a.matrix())
 
+# set nan
+a.set_nan(-99)
+
+# replace all nans
+a.replace_nan(0)
+
+# get full matrix data
+print (a.matrix())
 
