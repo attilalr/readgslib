@@ -60,7 +60,7 @@ class read:
   def matrix(self):
     return self.m
     
-  def replace_nan(x, col=None):
+  def replace_nan(self, x, col=None):
     if col == None:
       self.m[self.m == self.nan] = x
     else:
