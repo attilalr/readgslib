@@ -7,8 +7,7 @@ class read:
     self.filename = filename
 
     self.verbose = verbose
-    if nan!=None:
-      self.set_nan(nan)
+    self.set_nan(nan)
     
     try:
       file = open(filename)
@@ -61,8 +60,15 @@ class read:
   def matrix(self):
     return self.m
     
+  def replace_nan(x, col=None):
+    if col == None:
+      self.m[self.m == self.nan] = x
+    elif:
+      b = self.m[:, col]
+      b[b==self.nan] = x
+    
   def __str__(self):
-    return '<Obj. from Gslib data, cols: '+', '.join(self.cols)+', matrix shape: '+str((self.m).shape)+'>'
+    return '<Obj. from Gslib data, cols: '+', '.join(self.cols)+', data matrix shape: '+str((self.m).shape)+'>'
     
 #  def __repr__(self):
 #    return __str__()

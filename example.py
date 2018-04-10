@@ -7,6 +7,9 @@ print (a)
 # columns names
 print (a.cols)
 
+# name of the second column
+print (a.cols[1])
+
 # get column data
 print (a.col('X'))
 
