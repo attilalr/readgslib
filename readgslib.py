@@ -1,13 +1,19 @@
 import numpy as np
 
 class read:
-  def __init__(self, filename):
-    print ('Opening file '+filename+' ...')
+  def __init__(self, filename, verbose=0, nan=None):
+    if verbose:
+      print ('Opening file '+filename+' ...')
     self.filename = filename
+
+    self.verbose = verbose
+    if nan!=None:
+      self.set_nan(nan)
     
     try:
       file = open(filename)
-      print ('OK.')
+      if verbose:
+        print ('OK.')
     except:
       print ('ERROR opening file '+filename+'.')
 
@@ -16,10 +22,12 @@ class read:
   def initread(self):
     file = open(self.filename)
     self.title = file.readline()
-    print ('Title: '+self.title)
+    if self.verbose:
+      print ('Title: '+self.title)
     try:
       self.ncols = int(file.readline().split()[0])
-      print ('Number of columns: '+str(self.ncols))
+      if self.verbose:
+        print ('Number of columns: '+str(self.ncols))
     except:
       print ('Error when processing 2nd line.')
       
@@ -27,7 +35,8 @@ class read:
     for i in range(self.ncols):
       self.cols.append(file.readline().split()[0])
       
-    print ('Trying to extract '+str(self.ncols)+' cols: '+', '.join(self.cols))
+    if self.verbose:
+      print ('Trying to extract '+str(self.ncols)+' cols: '+', '.join(self.cols))
       
     file.close()
       
@@ -53,7 +62,7 @@ class read:
     return self.m
     
   def __str__(self):
-    return '<Obj. from Gslib data, cols: '+', '.join(self.cols)+'>'
+    return '<Obj. from Gslib data, cols: '+', '.join(self.cols)+', matrix shape: '+str((self.m).shape)+'>'
     
 #  def __repr__(self):
 #    return __str__()
