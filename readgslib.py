@@ -63,7 +63,7 @@ class read:
   def replace_nan(x, col=None):
     if col == None:
       self.m[self.m == self.nan] = x
-    elif:
+    else:
       b = self.m[:, col]
       b[b==self.nan] = x
     
