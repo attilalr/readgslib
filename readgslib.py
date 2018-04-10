@@ -43,7 +43,7 @@ class read:
   def cols(self):
     return self.cols
     
-  def col_data(self, col_item):
+  def col(self, col_item):
     if type(col_item) == type('a'):
       return self.dict_data[col_item]
     elif type(col_item) == type(1):
