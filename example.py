@@ -52,3 +52,18 @@ b.write('test_gslib.dat')
 #3 3
 #2 2
 #4 4
+
+
+import pandas as pd
+# Example for read a gslib file and transform in a pandas dataframe.
+file_pocos = 'example.gslib'
+a = readgslib.read(file_pocos)
+df = pd.DataFrame(columns=a.cols, data=a.matrix())
+
+# Write a pandas df in gslib format
+b = readgslib.write()
+b.set_title('Title')
+
+for col in df.columns:
+    b.put_var(col, df_pocos_estrat[col])
+b.write('data_gslib_from_pandas_df.dat')
