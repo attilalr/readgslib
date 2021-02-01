@@ -43,8 +43,11 @@ class read:
     self.m = np.loadtxt(self.filename, skiprows=self.ncols+2, delimiter=None)
     
     self.dict_data = {}
-    for i, col in enumerate(self.cols):
-      self.dict_data[col] = self.m[:,i]    
+    if len(self.cols) > 1:
+      for i, col in enumerate(self.cols):
+        self.dict_data[col] = self.m[:,i]    
+    else:
+      self.dict_data[self.cols[0]] = self.m[:]
   
   def set_nan(self, nan):
     self.nan = nan
